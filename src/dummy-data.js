@@ -24,3 +24,30 @@ export const DUMMY_MEALS = [
     price: 18.99,
   },
 ];
+
+export const DUMMY_CART_ITEMS = [
+  {
+    id: 'c1',
+    name: 'Sushi',
+    amount: 2,
+    price: 22.99,
+  },
+  {
+    id: 'c2',
+    name: 'Green Bowl',
+    amount: 1,
+    price: 18.99,
+  },
+  {
+    id: 'c3',
+    name: 'Barbecue Burger',
+    amount: 1,
+    price: 12.99,
+  },
+  {
+    id: 'c4',
+    name: 'Schnitzel',
+    amount: 3,
+    price: 16.5,
+  },
+]
