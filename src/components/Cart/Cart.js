@@ -2,7 +2,7 @@ import { DUMMY_CART_ITEMS } from '../../dummy-data';
 import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
 
-const Cart = (props) => {
+const Cart = props => {
   const cartItems = 
     <ul className={classes['cart-items']}>
       {DUMMY_CART_ITEMS.map(
