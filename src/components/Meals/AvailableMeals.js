@@ -8,10 +8,16 @@ import classes from './AvailableMeals.module.css'
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(null);
 
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch('https://task-14-http-requests-default-rtdb.europe-west1.firebasedatabase.app/meals.json');
+      
+      if (!response.ok) {
+        throw new Error('Error occurred');
+      }
+      
       const responseData = await response.json();
 
       const loadedMeals = [];
@@ -29,8 +35,10 @@ const AvailableMeals = () => {
       setIsLoading(false);
     }
 
-    fetchMeals();
-
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setFetchError(error.message);
+    });
   },[]);
 
   if (isLoading) {
@@ -38,6 +46,12 @@ const AvailableMeals = () => {
       <p>Loading...</p>
     </section>
   };
+
+  if(fetchError) {
+    return <section className={classes['meals-error']}>
+      <p>{fetchError}</p>
+    </section>
+  }
 
   const mealsList = meals.map(
     meal => 
